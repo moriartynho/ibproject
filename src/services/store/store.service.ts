@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { IMusic } from '../types/music.interface';
-import { CommonConstants } from '../constants/common-constants';
+import { IMusic } from '../../types/music.interface';
+import { CommonConstants } from '../../constants/common-constants';
 
 @Injectable({
   providedIn: 'root',

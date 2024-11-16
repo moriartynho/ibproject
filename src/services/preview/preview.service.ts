@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IMusic } from '../types/music.interface';
+import { IMusic } from '../../types/music.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,6 @@ export class PreviewService {
 
   setMusicToPreview(music: IMusic) {
     this.musicToPreview = music;
-    console.log(this.musicToPreview);
   }
 
   getMusicToPreview(): IMusic {

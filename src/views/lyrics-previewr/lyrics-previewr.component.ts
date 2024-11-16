@@ -1,7 +1,6 @@
-import { PreviewService } from './../../services/preview.service';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IMusic } from '../../types/music.interface';
+import { PreviewService } from '../../services/preview/preview.service';
 
 @Component({
   selector: 'app-lyrics-previewr',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { StoreService } from './store.service';
-import { IMusic } from '../types/music.interface';
+import { StoreService } from '../store/store.service';
+import { IMusic } from '../../types/music.interface';
 
 @Injectable({
   providedIn: 'root',

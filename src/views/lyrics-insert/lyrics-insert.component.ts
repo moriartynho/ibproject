@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { InsertService } from '../../services/insert.service';
-import { StoreService } from '../../services/store.service';
+import { InsertService } from '../../services/insert/insert.service';
+import { StoreService } from '../../services/store/store.service';
 import { IMusic } from '../../types/music.interface';
 import { CommonModule } from '@angular/common';
-import { PreviewService } from '../../services/preview.service';
+import { PreviewService } from '../../services/preview/preview.service';
 
 @Component({
   selector: 'app-lyrics-insert',

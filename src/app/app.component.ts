@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LyricsPreviewrComponent } from '../views/lyrics-previewr/lyrics-previewr.component';
 import { LyricsInsertComponent } from '../views/lyrics-insert/lyrics-insert.component';
-import { StoreService } from '../services/store.service';
+import { StoreService } from '../services/store/store.service';
 
 @Component({
   selector: 'app-root',
