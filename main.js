@@ -8,10 +8,11 @@ require("electron-reload")(path.join(__dirname, "dist"), {
 });
 
 app.on("ready", () => {
-
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    maximizable: true,
+    autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       contextIsolation: true,

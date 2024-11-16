@@ -1,0 +1,16 @@
+<div class="flex column">
+  <input [(ngModel)]="searchInput" (input)="searchMusic()" type="text" />
+  <!-- <textarea
+    [(ngModel)]="songLyrics"
+    placeholder="Digite a letra da música aqui..."
+    rows="10"
+    cols="50"
+    (input)="processLyrics()"
+  ></textarea> -->
+
+  <!-- <button type="submit">Adicionar Música</button> -->
+
+  <div>
+    <p *ngFor="let music of musicSearchResults">{{ music.title }}</p>
+  </div>
+</div>
