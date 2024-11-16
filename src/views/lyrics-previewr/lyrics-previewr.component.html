@@ -1,7 +1,7 @@
 <div class="previewr-container">
   <aside>
     <div>
-      <p *ngFor="let stranza of musicToPreview.lyrics">
+      <p *ngFor="let stranza of previewService.getMusicToPreview().lyrics">
         {{ stranza }}
       </p>
     </div>

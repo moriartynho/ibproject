@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { PreviewService } from './../../services/preview.service';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StoreService } from '../../services/store.service';
 import { IMusic } from '../../types/music.interface';
 
 @Component({
@@ -10,13 +10,6 @@ import { IMusic } from '../../types/music.interface';
   templateUrl: './lyrics-previewr.component.html',
   styleUrl: './lyrics-previewr.component.scss',
 })
-export class LyricsPreviewrComponent implements OnInit {
-  musicToPreview: IMusic;
-
-  constructor(private storeService: StoreService) {}
-
-  ngOnInit(): void {
-    this.storeService.getMusicFromMemory();
-    this.musicToPreview = this.storeService.getMusics()[1];
-  }
+export class LyricsPreviewrComponent {
+  constructor(public previewService: PreviewService) {}
 }

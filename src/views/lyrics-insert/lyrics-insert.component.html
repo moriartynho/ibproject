@@ -10,7 +10,11 @@
 
   <!-- <button type="submit">Adicionar Música</button> -->
 
-  <div>
-    <p *ngFor="let music of musicSearchResults">{{ music.title }}</p>
+  <div class="search-container">
+    <div *ngFor="let music of musicSearchResults">
+      <span (dblclick)="setMusicToPreview(music)">
+        {{ music.title }}
+      </span>
+    </div>
   </div>
 </div>
