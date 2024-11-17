@@ -12,3 +12,21 @@
 .row {
   flex-direction: row;
 }
+
+@for $i from 1 through 30 {
+  .gap-#{$i} {
+    margin-top: #{$i * 1}px;
+  }
+}
+
+@for $i from 1 through 30 {
+  .mt-#{$i} {
+    margin-top: #{$i * 1}px;
+  }
+}
+
+@for $i from 1 through 30 {
+  .mb-#{$i} {
+    margin-bottom: #{$i * 1}px;
+  }
+}

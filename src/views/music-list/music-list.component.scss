@@ -1,0 +1,24 @@
+.music-list-container {
+  border: 1px solid black;
+  width: 400px;
+  height: 300px;
+
+  .music-selected {
+    background-color: #f0f8ff;
+    color: #333;
+    font-weight: bold;
+    border: 1px solid #007acc;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  span {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: #eaeaea;
+    }
+  }
+}

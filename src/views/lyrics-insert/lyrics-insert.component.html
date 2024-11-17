@@ -11,8 +11,8 @@
   <!-- <button type="submit">Adicionar Música</button> -->
 
   <div class="search-container">
-    <div *ngFor="let music of musicSearchResults">
-      <span (dblclick)="setMusicToPreview(music)">
+    <div class="flex column gap-3" *ngFor="let music of musicSearchResults">
+      <span (dblclick)="doubleClickAction(music)">
         {{ music.title }}
       </span>
     </div>

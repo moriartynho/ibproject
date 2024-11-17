@@ -5,6 +5,7 @@ import { StoreService } from '../../services/store/store.service';
 import { IMusic } from '../../types/music.interface';
 import { CommonModule } from '@angular/common';
 import { PreviewService } from '../../services/preview/preview.service';
+import { ListService } from '../../services/list/list.service';
 
 @Component({
   selector: 'app-lyrics-insert',
@@ -23,7 +24,8 @@ export class LyricsInsertComponent {
   constructor(
     private insertService: InsertService,
     private storeService: StoreService,
-    private previewService: PreviewService
+    private previewService: PreviewService,
+    private listService: ListService
   ) {}
 
   processLyrics(): void {
@@ -50,8 +52,12 @@ export class LyricsInsertComponent {
     console.log(this.musicSearchResults);
   }
 
+  doubleClickAction(music: IMusic) {
+    this.setMusicToPreview(music);
+    this.listService.addMusicToList(music);
+  }
+
   setMusicToPreview(music: IMusic) {
-    console.log(music);
     this.previewService.setMusicToPreview(music);
   }
 }

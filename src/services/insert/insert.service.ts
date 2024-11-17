@@ -9,7 +9,10 @@ export class InsertService {
   constructor(private store: StoreService) {}
 
   insertMusicLyrics(lyrics: string[]) {
-    const music: IMusic = { title: lyrics[0], lyrics: lyrics };
+    const music: IMusic = {
+      title: lyrics[0], lyrics: lyrics,
+      isMusicSelected: false
+    };
     this.store.insertMusic(music);
   }
 }

@@ -1,0 +1,9 @@
+<div class="music-list-container mt-10 flex column gap-5">
+  <span
+    (dblclick)="doubleClickAction(music)"
+    (click)="selectMusic(music)"
+    *ngFor="let music of getMusicList()"
+    [ngClass]="{ 'music-selected': music.isMusicSelected }"
+    >{{ music.title }}</span
+  >
+</div>
