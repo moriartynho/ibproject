@@ -1,15 +1,6 @@
 <div class="flex column">
   <input [(ngModel)]="searchInput" (input)="searchMusic()" type="text" />
-  <!-- <textarea
-    [(ngModel)]="songLyrics"
-    placeholder="Digite a letra da música aqui..."
-    rows="10"
-    cols="50"
-    (input)="processLyrics()"
-  ></textarea> -->
-
-  <!-- <button type="submit">Adicionar Música</button> -->
-
+  <button (click)="modal.toggle()">Adicionar</button>
   <div class="search-container">
     <div class="flex column gap-3" *ngFor="let music of musicSearchResults">
       <span (dblclick)="doubleClickAction(music)">
@@ -18,3 +9,28 @@
     </div>
   </div>
 </div>
+
+<app-modal #modal>
+  <div class="flex column">
+    <form
+      (ngSubmit)="saveLyrics()"
+      [formGroup]="lyricsForm"
+    >
+      <input
+        placeholder="Digite o título da música aqui..."
+        *ngIf="lyricsForm.addValidators"
+        formControlName="musicTitleInput"
+        type="text"
+      />
+      <textarea
+        *ngIf="lyricsForm.addValidators"
+        formControlName="musicLyricsInput"
+        placeholder="Digite a letra da música aqui..."
+        rows="10"
+        cols="50"
+      ></textarea>
+
+      <button type="submit">Adicionar Música</button>
+    </form>
+  </div>
+</app-modal>

@@ -8,11 +8,7 @@ import { IMusic } from '../../types/music.interface';
 export class InsertService {
   constructor(private store: StoreService) {}
 
-  insertMusicLyrics(lyrics: string[]) {
-    const music: IMusic = {
-      title: lyrics[0], lyrics: lyrics,
-      isMusicSelected: false
-    };
+  insertMusicLyrics(music: IMusic) {
     this.store.insertMusic(music);
   }
 }

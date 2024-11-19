@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "electron": "ng build && electron .",
-    "package": "electron-packager . AngularElectronApp --platform=win32 --arch=x64 --out=dist-electron --overwrite",
+    "package": "electron-packager ./ ibprojectionApp --platform=win32 --arch=x64 --out=dist-electron --overwrite --ignore=node_modules/electron-reload",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

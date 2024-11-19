@@ -27,7 +27,15 @@ export class StoreService {
   }
 
   insertMusic(music: IMusic) {
+    if (this.hasMusic(music)) return;
     this.musicsOnMemory.push(music);
     this.updateMusicOnMemory();
+  }
+
+  hasMusic(music: IMusic): boolean {
+    return this.musicsOnMemory.some(
+      (musicOnList) =>
+        musicOnList.title.toUpperCase() === music.title.toUpperCase()
+    );
   }
 }
