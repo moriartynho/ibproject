@@ -85,7 +85,7 @@ export class LyricsInsertComponent {
 
   editSelectedMusic() {
     if (!this.selectedMusic) {
-      console.warn('No music selected to add to the list.');
+      console.warn('No music selected to add or edit to the list.');
       return;
     }
     this.lyricsForm.setValue({
@@ -117,7 +117,7 @@ export class LyricsInsertComponent {
     );
 
     const newMusic: IMusic = {
-      id: this.selectedMusic.id || '',
+      id: this.selectedMusic?.id,
       title,
       lyrics,
       isMusicSelected: false,
