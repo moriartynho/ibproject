@@ -15,6 +15,7 @@ export class StoreService {
       CommonConstants.LOCAL_STORAGE_KEY
     );
     this.musicsOnMemory = musicsAsString ? JSON.parse(musicsAsString) : [];
+    this.resetSelect();
   }
 
   updateMusicOnMemory() {
@@ -22,15 +23,24 @@ export class StoreService {
     localStorage.setItem(CommonConstants.LOCAL_STORAGE_KEY, musicsAsString);
   }
 
+  resetSelect(): void {
+    this.musicsOnMemory.forEach((music) => (music.isMusicSelected = false));
+  }
+
   getMusics(): IMusic[] {
     return this.musicsOnMemory;
   }
 
   insertOrUpdateMusic(music: IMusic): void {
-    if (this.hasMusic(music)) {
-      const existingMusicIndex = this.getIndexOfMusicOnMemoryList(music);
-      this.musicsOnMemory.splice(existingMusicIndex);
-      // this.musicsOnMemory.push(music);
+    const existingMusicIndex = this.musicsOnMemory.findIndex(
+      (m) => m.id === music.id
+    );
+
+    if (existingMusicIndex !== -1) {
+      this.musicsOnMemory[existingMusicIndex] = {
+        ...this.musicsOnMemory[existingMusicIndex],
+        ...music,
+      };
     } else {
       music.id = music.id || this.generateUniqueId();
       this.musicsOnMemory.push(music);

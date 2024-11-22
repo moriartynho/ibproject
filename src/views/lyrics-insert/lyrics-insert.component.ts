@@ -93,6 +93,7 @@ export class LyricsInsertComponent {
       musicLyricsInput: this.unformatLyrics(this.selectedMusic.lyrics),
     });
     this.modal.toggle();
+    this.searchMusic();
   }
 
   doubleClickAction(music: IMusic) {
@@ -116,7 +117,7 @@ export class LyricsInsertComponent {
     );
 
     const newMusic: IMusic = {
-      id: '',
+      id: this.selectedMusic.id || '',
       title,
       lyrics,
       isMusicSelected: false,
