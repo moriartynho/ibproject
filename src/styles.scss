@@ -12,6 +12,18 @@
 .row {
   flex-direction: row;
 }
+.space-between{
+  justify-content: space-between;
+}
+
+.music-selected {
+  background-color: #f0f8ff;
+  color: #333;
+  font-weight: bold;
+  border: 1px solid #007acc;
+  padding: 5px;
+  border-radius: 5px;
+}
 
 @for $i from 1 through 30 {
   .gap-#{$i} {

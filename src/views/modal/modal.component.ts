@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -14,6 +14,13 @@ export class ModalComponent {
 
   toggle () {
     this.show = !this.show;
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      this.toggle();
+    }
   }
 
 }

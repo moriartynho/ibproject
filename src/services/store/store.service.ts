@@ -26,16 +26,39 @@ export class StoreService {
     return this.musicsOnMemory;
   }
 
-  insertMusic(music: IMusic) {
-    if (this.hasMusic(music)) return;
-    this.musicsOnMemory.push(music);
+  insertOrUpdateMusic(music: IMusic): void {
+    if (this.hasMusic(music)) {
+      const existingMusicIndex = this.getIndexOfMusicOnMemoryList(music);
+      this.musicsOnMemory.splice(existingMusicIndex);
+      // this.musicsOnMemory.push(music);
+    } else {
+      music.id = music.id || this.generateUniqueId();
+      this.musicsOnMemory.push(music);
+    }
+
     this.updateMusicOnMemory();
+  }
+
+  removeMusic(music: IMusic): void {
+    if (!this.hasMusic(music)) return;
+    const indexMusic = this.getIndexOfMusicOnMemoryList(music);
+    this.musicsOnMemory.splice(indexMusic);
+    this.updateMusicOnMemory();
+  }
+
+  getIndexOfMusicOnMemoryList(music: IMusic): number {
+    return this.musicsOnMemory.findIndex((m) => m.id === music.id);
+  }
+
+  generateUniqueId(): string {
+    return (
+      Math.random().toString(36).substring(2, 15) + Date.now().toString(36)
+    );
   }
 
   hasMusic(music: IMusic): boolean {
     return this.musicsOnMemory.some(
-      (musicOnList) =>
-        musicOnList.title.toUpperCase() === music.title.toUpperCase()
+      (musicOnList) => musicOnList.id === music.id
     );
   }
 }

@@ -9,6 +9,6 @@ export class InsertService {
   constructor(private store: StoreService) {}
 
   insertMusicLyrics(music: IMusic) {
-    this.store.insertMusic(music);
+    this.store.insertOrUpdateMusic(music);
   }
 }

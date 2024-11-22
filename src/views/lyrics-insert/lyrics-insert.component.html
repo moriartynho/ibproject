@@ -1,9 +1,18 @@
 <div class="flex column">
   <input [(ngModel)]="searchInput" (input)="searchMusic()" type="text" />
-  <button (click)="modal.toggle()">Adicionar</button>
+  <div class="flex space-between mt-4 mb-4">
+    <button (click)="modal.toggle()">Adicionar</button>
+    <button *ngIf="selectedMusic" (click)="addSelectedMusicToList()">Adicionar à lista</button>
+    <button *ngIf="selectedMusic" (click)="editSelectedMusic()">Editar</button>
+    <button *ngIf="selectedMusic" (click)="removeSelectedMusic()">Remover</button>
+  </div>
   <div class="search-container">
     <div class="flex column gap-3" *ngFor="let music of musicSearchResults">
-      <span (dblclick)="doubleClickAction(music)">
+      <span
+        (click)="selectMusic(music)"
+        (dblclick)="doubleClickAction(music)"
+        [ngClass]="{ 'music-selected': music.isMusicSelected }"
+      >
         {{ music.title }}
       </span>
     </div>
@@ -12,10 +21,7 @@
 
 <app-modal #modal>
   <div class="flex column">
-    <form
-      (ngSubmit)="saveLyrics()"
-      [formGroup]="lyricsForm"
-    >
+    <form (ngSubmit)="saveLyrics()" [formGroup]="lyricsForm">
       <input
         placeholder="Digite o título da música aqui..."
         *ngIf="lyricsForm.addValidators"

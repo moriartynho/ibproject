@@ -15,3 +15,14 @@ textarea {
   height: 65vh;
   overflow: auto;
 }
+
+button {
+  width: 5rem;
+  height: 3rem;
+  padding: 6px;
+  font-size: 12px;
+  &:hover {
+    background-color: #ccd0d3;
+    color: #333;
+  }
+}
