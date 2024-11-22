@@ -11,7 +11,7 @@
       <span
         (click)="selectMusic(music)"
         (dblclick)="doubleClickAction(music)"
-        [ngClass]="{ 'music-selected': music.isMusicSelected }"
+        [ngClass]="{ 'music-selected': music.isSearchMusicSelected }"
       >
         {{ music.title }}
       </span>

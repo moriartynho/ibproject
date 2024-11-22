@@ -30,14 +30,14 @@ export class MusicListComponent {
 
   selectMusic(music: IMusic): void {
     if (this.musicSelected) {
-      this.musicSelected.isMusicSelected = false;
+      this.musicSelected.isListMusicSelected = false;
     }
-    music.isMusicSelected = true;
+    music.isListMusicSelected = true;
     this.musicSelected = music;
   }
 
   deleteSelectedMusic(): void {
-    if (!this.musicSelected || !this.musicSelected.isMusicSelected) {
+    if (!this.musicSelected || !this.musicSelected.isListMusicSelected) {
       return;
     }
     this.listService.removeMusicFromList(this.musicSelected);

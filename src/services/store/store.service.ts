@@ -24,7 +24,7 @@ export class StoreService {
   }
 
   resetSelect(): void {
-    this.musicsOnMemory.forEach((music) => (music.isMusicSelected = false));
+    this.musicsOnMemory.forEach((music) => (music.isSearchMusicSelected = false));
   }
 
   getMusics(): IMusic[] {

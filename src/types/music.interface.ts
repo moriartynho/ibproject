@@ -2,5 +2,6 @@ export interface IMusic {
   id: string;
   title: string;
   lyrics: string[];
-  isMusicSelected: boolean;
+  isSearchMusicSelected: boolean;
+  isListMusicSelected: boolean;
 }

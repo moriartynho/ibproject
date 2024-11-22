@@ -3,7 +3,7 @@
     (dblclick)="doubleClickAction(music)"
     (click)="selectMusic(music)"
     *ngFor="let music of getMusicList()"
-    [ngClass]="{ 'music-selected': music.isMusicSelected }"
+    [ngClass]="{ 'music-selected': music.isListMusicSelected }"
     >{{ music.title }}</span
   >
 </div>

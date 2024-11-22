@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { PreviewService } from '../../services/preview/preview.service';
 import { ListService } from '../../services/list/list.service';
 import { ModalComponent } from '../modal/modal.component';
+import { normalizeText } from '../../services/utils/utils-functions';
 
 @Component({
   selector: 'app-lyrics-insert',
@@ -46,25 +47,23 @@ export class LyricsInsertComponent {
       return;
     }
 
-    const searchQuery = this.normalizeText(this.searchInput);
+    const searchQuery = normalizeText(this.searchInput);
     this.musicSearchResults = this.storeService
       .getMusics()
-      .filter((music) => this.normalizeText(music.title).includes(searchQuery));
+      .filter((music) => normalizeText(music.title).includes(searchQuery));
   }
 
-  normalizeText(text: string): string {
-    return text
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .toLowerCase();
-  }
 
   selectMusic(music: IMusic): void {
-    this.selectedMusic?.isMusicSelected &&
-      (this.selectedMusic.isMusicSelected = false);
-    this.selectedMusic = this.selectedMusic === music ? ({} as IMusic) : music;
-    this.selectedMusic.isMusicSelected = !!Object.keys(this.selectedMusic)
-      .length;
+    if (this.selectedMusic === music) {
+      this.selectedMusic.isSearchMusicSelected = false;
+      this.selectedMusic = null!;
+    } else {
+      this.selectedMusic?.isSearchMusicSelected &&
+        (this.selectedMusic.isSearchMusicSelected = false);
+      this.selectedMusic = music;
+      this.selectedMusic.isSearchMusicSelected = true;
+    }
   }
 
   addSelectedMusicToList(): void {
@@ -74,7 +73,7 @@ export class LyricsInsertComponent {
     }
 
     try {
-      this.selectedMusic.isMusicSelected = false;
+      this.selectedMusic.isSearchMusicSelected = false;
       this.listService.addMusicToList(this.selectedMusic);
       console.info(`Music added to the list: ${this.selectedMusic.title}`);
       this.selectedMusic = null;
@@ -83,17 +82,16 @@ export class LyricsInsertComponent {
     }
   }
 
-  editSelectedMusic() {
+  editSelectedMusic(): void {
     if (!this.selectedMusic) {
-      console.warn('No music selected to add or edit to the list.');
+      console.warn('No music selected to edit.');
       return;
     }
     this.lyricsForm.setValue({
       musicTitleInput: this.selectedMusic.title,
       musicLyricsInput: this.unformatLyrics(this.selectedMusic.lyrics),
     });
-    this.modal.toggle();
-    this.searchMusic();
+    this.modal?.toggle();
   }
 
   doubleClickAction(music: IMusic) {
@@ -120,13 +118,22 @@ export class LyricsInsertComponent {
       id: this.selectedMusic?.id,
       title,
       lyrics,
-      isMusicSelected: false,
+      isSearchMusicSelected: false,
+      isListMusicSelected: false
     };
 
     this.insertService.insertMusicLyrics(newMusic);
 
     this.lyricsForm.reset();
-    this.modal.toggle();
+    this.modalToggle();
+  }
+
+  modalToggle(): void {
+    if (this.modal) {
+      this.modalToggle();
+    } else {
+      console.error('Modal component is not available.');
+    }
   }
 
   removeSelectedMusic(): void {
