@@ -2,9 +2,13 @@
   <input [(ngModel)]="searchInput" (input)="searchMusic()" type="text" />
   <div class="flex space-between mt-4 mb-4">
     <button (click)="modal.toggle()">Adicionar</button>
-    <button *ngIf="selectedMusic" (click)="addSelectedMusicToList()">Adicionar à lista</button>
+    <button *ngIf="selectedMusic" (click)="addSelectedMusicToList()">
+      Adicionar à lista
+    </button>
     <button *ngIf="selectedMusic" (click)="editSelectedMusic()">Editar</button>
-    <button *ngIf="selectedMusic" (click)="removeSelectedMusic()">Remover</button>
+    <button *ngIf="selectedMusic" (click)="removeSelectedMusic()">
+      Remover
+    </button>
   </div>
   <div class="search-container">
     <div class="flex column gap-3" *ngFor="let music of musicSearchResults">
@@ -21,22 +25,24 @@
 
 <app-modal #modal>
   <div class="flex column">
-    <form (ngSubmit)="saveLyrics()" [formGroup]="lyricsForm">
-      <input
-        placeholder="Digite o título da música aqui..."
-        *ngIf="lyricsForm.addValidators"
-        formControlName="musicTitleInput"
-        type="text"
-      />
-      <textarea
-        *ngIf="lyricsForm.addValidators"
-        formControlName="musicLyricsInput"
-        placeholder="Digite a letra da música aqui..."
-        rows="10"
-        cols="50"
-      ></textarea>
+    <div class="flex row">
+      <form (ngSubmit)="saveLyrics()" [formGroup]="lyricsForm">
+        <input
+          placeholder="Digite o título da música aqui..."
+          *ngIf="lyricsForm.addValidators"
+          formControlName="musicTitleInput"
+          type="text"
+        />
+        <textarea
+          *ngIf="lyricsForm.addValidators"
+          formControlName="musicLyricsInput"
+          placeholder="Digite a letra da música aqui..."
+          rows="10"
+          cols="50"
+        ></textarea>
 
-      <button type="submit">Adicionar Música</button>
-    </form>
+        <button type="submit">Salvar Música</button>
+      </form>
+    </div>
   </div>
 </app-modal>

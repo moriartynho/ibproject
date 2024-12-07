@@ -14,6 +14,7 @@ import { ListService } from '../../services/list/list.service';
 import { ModalComponent } from '../modal/modal.component';
 import { normalizeText } from '../../services/utils/utils-functions';
 
+
 @Component({
   selector: 'app-lyrics-insert',
   standalone: true,
@@ -52,7 +53,6 @@ export class LyricsInsertComponent {
       .getMusics()
       .filter((music) => normalizeText(music.title).includes(searchQuery));
   }
-
 
   selectMusic(music: IMusic): void {
     if (this.selectedMusic === music) {
@@ -119,7 +119,7 @@ export class LyricsInsertComponent {
       title,
       lyrics,
       isSearchMusicSelected: false,
-      isListMusicSelected: false
+      isListMusicSelected: false,
     };
 
     this.insertService.insertMusicLyrics(newMusic);
@@ -156,6 +156,7 @@ export class LyricsInsertComponent {
       .map((stanza) => stanza.trim())
       .filter((stanza) => stanza.length > 0);
   }
+
 
   private unformatLyrics(lyricsArray: string[]): string {
     return lyricsArray.join('\n\n');
