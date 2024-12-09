@@ -1,0 +1,10 @@
+{
+    "jestrunner.codeLens": [
+        "run",
+        "debug",
+        "coverage"
+    ],
+    "jestrunner.runOptions": [
+        "--coverage"
+    ]
+}

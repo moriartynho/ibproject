@@ -9,7 +9,7 @@
     "package": "electron-packager ./ ibprojectionApp --platform=win32 --arch=x64 --out=dist-electron --overwrite --ignore=node_modules/electron-reload",
     "watch": "ng build --watch --configuration development",
     "test": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch --coverage"
   },
   "private": true,
   "main": "main.js",

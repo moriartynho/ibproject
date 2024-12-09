@@ -6,7 +6,7 @@ import { CommonConstants } from '../../constants/common-constants';
   providedIn: 'root',
 })
 export class StoreService {
-  musicsOnMemory: IMusic[] = [];
+  private musicsOnMemory: IMusic[] = [];
 
   constructor() {}
 
