@@ -29,6 +29,7 @@ export class LyricsInsertComponent {
   searchInput: string = '';
   musicSearchResults: IMusic[] = [];
   selectedMusic: IMusic;
+  component: import("c:/Users/moriartynho/Desktop/Wilkson/ibprojection/dist-electron/AngularElectronApp-win32-x64/resources/app/src/types/music.interface").IMusic;
 
   constructor(
     private insertService: InsertService,
@@ -125,16 +126,10 @@ export class LyricsInsertComponent {
     this.insertService.insertMusicLyrics(newMusic);
 
     this.lyricsForm.reset();
-    this.modalToggle();
+    this.modal?.toggle();
   }
 
-  modalToggle(): void {
-    if (this.modal) {
-      this.modalToggle();
-    } else {
-      console.error('Modal component is not available.');
-    }
-  }
+
 
   removeSelectedMusic(): void {
     if (!this.selectedMusic) {
