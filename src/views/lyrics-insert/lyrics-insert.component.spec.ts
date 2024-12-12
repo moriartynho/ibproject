@@ -137,6 +137,45 @@ describe('LyricsInsertComponent', () => {
       expect(mockedSelectedMusic.isSearchMusicSelected).toBeTruthy();
       expect(component.selectedMusic).toEqual(mockedSelectedMusic);
     });
+    it('should toggle selected musics', () => {
+      const mockMusic1: IMusic = {
+        id: '1',
+        title: 'Eu sou de Jesus',
+        lyrics: [],
+        isSearchMusicSelected: true,
+        isListMusicSelected: false,
+      };
+      const mockMusic2: IMusic = {
+        id: '2',
+        title: 'Eu sou Casa',
+        lyrics: [],
+        isSearchMusicSelected: false,
+        isListMusicSelected: false,
+      };
+      component.selectedMusic = mockMusic1;
+
+      component.selectMusic(mockMusic2);
+
+      expect(mockMusic1.isSearchMusicSelected).toBeFalsy();
+      expect(mockMusic2.isSearchMusicSelected).toBeTruthy();
+    });
+    it('should set selected to false if null', () => {
+      const mockMusic1: IMusic = undefined as unknown as IMusic;
+      const mockMusic2: IMusic = {
+        id: '2',
+        title: 'Eu sou Casa',
+        lyrics: [],
+        isSearchMusicSelected: false,
+        isListMusicSelected: false,
+      };
+
+      component.selectedMusic = mockMusic1;
+
+      component.selectMusic(mockMusic2);
+
+      expect(mockMusic2.isSearchMusicSelected).toBeTruthy();
+      expect(component.selectedMusic).toEqual(mockMusic2);
+    });
   });
 
   describe('#addSelectedMusicToList', () => {

@@ -92,7 +92,7 @@ export class LyricsInsertComponent {
       musicTitleInput: this.selectedMusic.title,
       musicLyricsInput: this.unformatLyrics(this.selectedMusic.lyrics),
     });
-    this.modal?.toggle();
+    this.modal.toggle();
   }
 
   doubleClickAction(music: IMusic) {
@@ -126,7 +126,7 @@ export class LyricsInsertComponent {
     this.insertService.insertMusicLyrics(newMusic);
 
     this.lyricsForm.reset();
-    this.modal?.toggle();
+    this.modal.toggle();
   }
 
 
